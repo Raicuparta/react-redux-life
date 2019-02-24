@@ -1,19 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import t from 'prop-types';
+
+import { actions } from './store';
 import './App.css';
 
-function App(props) {
-  return (
-    <div>{props.hello}</div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    const {
+      initCells,
+      settings,
+    } = this.props;
+
+    initCells(settings.width, settings.height);
+  }
+
+  render() {
+    return (
+      <div>{this.props.cells}</div>
+    );
+  }
 }
 
-function mapStateToProps(state) {
-  return {
-    hello: state.hello,
-  };
-}
+const mapStateToProps = state => ({
+  cells: state.cells,
+  settings: state.settings,
+});
 
-const ConnectedApp = connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  initCells: actions.initCells,
+};
+
+App.propTypes = {
+  settings: t.objectOf({ width: t.number, height: t.number }).isRequired,
+  cells: t.arrayOf(t.arrayOf(t.boolean)).isRequired,
+  initCells: t.func.isRequired,
+};
+
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default ConnectedApp;
