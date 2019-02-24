@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+}
+
+.cell.active {
+  background-color: black;
+}

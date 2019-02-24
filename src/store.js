@@ -2,6 +2,7 @@ import { combineReducers, createStore } from 'redux';
 
 const types = {
   INIT_CELLS: 'INIT_CELLS',
+  TOGGLE_CELL: 'TOGGLE_CELL',
 };
 
 const DEFAULT_SETTINGS = {
@@ -11,10 +12,17 @@ const DEFAULT_SETTINGS = {
 
 const settingsReducer = (state = DEFAULT_SETTINGS) => state;
 
-const cellsReducer = (state = [], { type, width, height }) => {
+const cellsReducer = (state = [], { type, payload }) => {
   switch (type) {
     case types.INIT_CELLS:
-      return new Array(width).fill(new Array(height).fill(false));
+      return new Array(payload.width).fill(new Array(payload.height).fill(false));
+    case types.TOGGLE_CELL:
+      return state.map((row, x) => row.map((cell, y) => {
+        if (x === payload.x && y === payload.y) {
+          return !cell;
+        }
+        return cell;
+      }));
     default:
       return state;
   }
@@ -27,12 +35,23 @@ export const reducer = combineReducers({
 
 const initCells = (width, height) => ({
   type: types.INIT_CELLS,
-  width,
-  height,
+  payload: {
+    width,
+    height,
+  },
+});
+
+const toggleCell = (x, y) => ({
+  type: types.TOGGLE_CELL,
+  payload: {
+    x,
+    y,
+  },
 });
 
 export const actions = {
   initCells,
+  toggleCell,
 };
 
 export default createStore(

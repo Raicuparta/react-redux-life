@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import t from 'prop-types';
 
-import { actions } from './store';
+import { actions } from '../store';
+import Grid from './Grid';
 import './App.css';
 
 class App extends React.Component {
@@ -17,13 +18,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>{this.props.cells}</div>
+      <Grid />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  cells: state.cells,
   settings: state.settings,
 });
 
@@ -32,8 +32,7 @@ const mapDispatchToProps = {
 };
 
 App.propTypes = {
-  settings: t.objectOf({ width: t.number, height: t.number }).isRequired,
-  cells: t.arrayOf(t.arrayOf(t.boolean)).isRequired,
+  settings: t.shape({ width: t.number, height: t.number }).isRequired,
   initCells: t.func.isRequired,
 };
 
