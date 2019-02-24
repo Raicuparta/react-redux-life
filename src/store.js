@@ -8,8 +8,8 @@ const actionTypes = {
 
 const defaults = {
   SETTINGS: {
-    width: 10,
-    height: 10,
+    width: 50,
+    height: 50,
   },
   CELLS: [],
 };
@@ -19,7 +19,7 @@ const settingsReducer = (state = defaults.SETTINGS) => state;
 // positive mod function to wrap index around array
 const mod = (index, length) => ((index % length) + length) % length;
 
-const nextTick = state => state.map((row, y) => row.map((cell, x) => {
+const nextTickReducer = state => state.map((row, y) => row.map((cell, x) => {
   const prevRow = state[mod(y - 1, row.length)];
   const nextRow = state[mod(y + 1, row.length)];
 
@@ -56,7 +56,7 @@ const cellsReducer = (state = defaults.CELLS, { type, payload }) => {
         return cell;
       }));
     case actionTypes.NEXT_TICK:
-      return nextTick(state);
+      return nextTickReducer(state);
     default:
       return state;
   }
@@ -83,9 +83,14 @@ const toggleCell = (x, y) => ({
   },
 });
 
+const nextTick = () => ({
+  type: actionTypes.NEXT_TICK,
+});
+
 export const actions = {
   initCells,
   toggleCell,
+  nextTick,
 };
 
 export default createStore(

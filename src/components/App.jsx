@@ -18,7 +18,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <Grid />
+      <div>
+        <Grid />
+        <button type="button" onClick={this.props.nextTick}>Next</button>
+      </div>
     );
   }
 }
@@ -29,11 +32,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   initCells: actions.initCells,
+  nextTick: actions.nextTick,
 };
 
 App.propTypes = {
   settings: t.shape({ width: t.number, height: t.number }).isRequired,
   initCells: t.func.isRequired,
+  nextTick: t.func.isRequired,
 };
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
