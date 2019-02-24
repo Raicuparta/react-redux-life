@@ -8,11 +8,15 @@ import './Grid.css';
 const Grid = ({ cells, handleCellClick }) => (
   <div>
     {
-      cells.map((row, x) => (
-        <div className="row">
+      cells.map((row, y) => (
+        <div
+          key={y}
+          className="row"
+        >
           {
-            row.map((cell, y) => (
+            row.map((cell, x) => (
               <div
+                key={x}
                 className={`cell ${cell ? 'active' : ''}`}
                 onClick={() => handleCellClick(x, y)}
               />
@@ -34,7 +38,7 @@ const mapDispatchToProps = {
 };
 
 Grid.propTypes = {
-  cells: t.arrayOf(t.arrayOf(t.boolean)).isRequired,
+  cells: t.arrayOf(t.arrayOf(t.number)).isRequired,
   handleCellClick: t.func.isRequired,
 };
 
