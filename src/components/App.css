@@ -8,4 +8,6 @@
 
 .app {
   display: flex;
+  border-radius: 10px;
+  background-color: #607d8b;
 }

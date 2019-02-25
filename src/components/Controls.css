@@ -1,3 +1,44 @@
 .controls {
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.controls-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.controls-button {
+  background-color: #31596c;
+  border: 0;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.controls-button:hover {
+  background-color: #46a249;
+}
+
+.controls-button:active {
+  background-color: #3c893e;
+}
+
+.controls-field {
+  font-size: 20px;
+  width: 100px;
+  border-radius: 10px;
+  border: 0;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }

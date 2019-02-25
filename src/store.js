@@ -9,8 +9,8 @@ const actionTypes = {
 
 const defaults = {
   SETTINGS: {
-    width: 50,
-    height: 50,
+    width: 30,
+    height: 30,
     interval: 150,
   },
   CELLS: [],

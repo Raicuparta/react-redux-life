@@ -6,7 +6,7 @@ import { actions } from '../store';
 import './Grid.css';
 
 const Grid = ({ cells, handleCellClick }) => (
-  <div>
+  <div className="grid">
     {
       cells.map((row, y) => (
         <div

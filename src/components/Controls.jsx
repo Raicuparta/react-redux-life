@@ -64,22 +64,30 @@ class Controls extends React.Component {
 
   render = () => (
     <div className="controls">
-      <button onClick={this.props.nextTick}>Next</button>
-      <button onClick={this.handlePlayClick}>
-        {
-          this.state.intervalId ? 'Stop' : 'Play'
-        }
-      </button>
-      <input
-        type="number"
-        onChange={this.handleWidthChange}
-        value={this.props.settings.width}
-      />
-      <input
-        type="number"
-        onChange={this.handleHeightChange}
-        value={this.props.settings.height}
-      />
+      <div className="controls-panel">
+        <button className="controls-button" onClick={this.props.nextTick}>Next</button>
+        <button className="controls-button" onClick={this.handlePlayClick}>
+          {
+            this.state.intervalId ? 'Stop' : 'Play'
+          }
+        </button>
+      </div>
+      <div className="controls-panel">
+        Width
+        <input
+          className="controls-field"
+          type="number"
+          onChange={this.handleWidthChange}
+          value={this.props.settings.width}
+        />
+        Height
+        <input
+          className="controls-field"
+          type="number"
+          onChange={this.handleHeightChange}
+          value={this.props.settings.height}
+        />
+      </div>
     </div>
   )
 }
