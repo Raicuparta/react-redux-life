@@ -1,12 +1,23 @@
 
 # Game of Life
 
-> Smallpdf coding challenge.
+ES6+JSX / React / Redux implementation of [game of life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
 
-## The Challenge
+## Intro
+Very fun challenge, definitely the most interesting one I've done so far. Really enjoyed working on it.
 
-Write a simple version of the [game of life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) with the stack ES6+JSX, React and Redux.
+## Time
+In total this took me about 5 hours, split between two days. I'm limited to Windows right now, so initially a bit slower than usual, but not by much.
 
-This challenge should take you a couple of hours and your are free to choose which feature to implement. There is no time pressure. Just notify us by email when you are done.
+First two hours to get the main grid and Game of Life rules working through Redux. Next was building the interface controls. Final hour or so was mostly for cleaning up and styling.
 
-We are going to look at your code in terms of simplicity, structure and style. Please also write an imaginary todo list in this repository of what could be changed or added in the future.
+## Todo
+* Make app responsive
+* More adjustable settings (cell size, update delay, etc)
+* Ability to draw with mouse continously instead of only by individual clicks
+* Ability to insert some known [patterns](https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Examples_of_patterns) could be fun
+
+## My Beautiful Code
+Biggest challenge for me was deciding on the architecture, where to put the game logic, timer logic, etc. React wouldn't really be my library of choice for something like this. Since I'm also used to working with game libraries, initially it was a bit hard to think the React way instead of the game development way.
+
+I'm mostly satisfied with how it turned out, with the game logic being in the reducers. The timers being handled in the Controls component was probably not the smartest thing to do. In a larger project this might become confusing.
