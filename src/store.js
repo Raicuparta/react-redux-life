@@ -4,6 +4,7 @@ const actionTypes = {
   INIT_CELLS: 'INIT_CELLS',
   TOGGLE_CELL: 'TOGGLE_CELL',
   NEXT_TICK: 'NEXT_TICK',
+  UPDATE_SETING: 'UPDATE_SETING',
 };
 
 const defaults = {
@@ -15,7 +16,15 @@ const defaults = {
   CELLS: [],
 };
 
-const settingsReducer = (state = defaults.SETTINGS) => state;
+const settingsReducer = (state = defaults.SETTINGS, { type, payload }) => {
+  if (type === actionTypes.UPDATE_SETING) {
+    return {
+      ...state,
+      [payload.key]: payload.value,
+    };
+  }
+  return state;
+};
 
 // positive mod function to wrap index around array
 const mod = (index, length) => ((index % length) + length) % length;
@@ -84,6 +93,14 @@ const toggleCell = (x, y) => ({
   },
 });
 
+const updateSetting = (key, value) => ({
+  type: actionTypes.UPDATE_SETING,
+  payload: {
+    key,
+    value,
+  },
+});
+
 const nextTick = () => ({
   type: actionTypes.NEXT_TICK,
 });
@@ -92,6 +109,7 @@ export const actions = {
   initCells,
   toggleCell,
   nextTick,
+  updateSetting,
 };
 
 export default createStore(

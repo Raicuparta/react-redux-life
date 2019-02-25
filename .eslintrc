@@ -9,6 +9,7 @@
     "react/destructuring-assignment": false,
     "jsx-a11y/click-events-have-key-events": false,
     "jsx-a11y/no-static-element-interactions": false,
-    "react/no-array-index-key": false
+    "react/no-array-index-key": false,
+    "react/button-has-type": false
   }
 }
