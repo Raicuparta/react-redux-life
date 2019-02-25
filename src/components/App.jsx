@@ -7,6 +7,10 @@ import Grid from './Grid';
 import './App.css';
 
 class App extends React.Component {
+  state = {
+    intervalId: null,
+  }
+
   componentDidMount() {
     const {
       initCells,
@@ -16,11 +20,36 @@ class App extends React.Component {
     initCells(settings.width, settings.height);
   }
 
+  handlePlayClick = () => {
+    const {
+      nextTick,
+      settings,
+    } = this.props;
+
+    const { intervalId } = this.state;
+
+    if (intervalId) {
+      clearInterval(intervalId);
+      this.setState({
+        intervalId: null,
+      });
+    } else {
+      this.setState({
+        intervalId: setInterval(nextTick, settings.interval),
+      });
+    }
+  }
+
   render() {
     return (
       <div>
         <Grid />
         <button type="button" onClick={this.props.nextTick}>Next</button>
+        <button type="button" onClick={this.handlePlayClick}>
+          {
+            this.state.intervalId ? 'Stop' : 'Play'
+          }
+        </button>
       </div>
     );
   }

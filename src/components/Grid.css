@@ -5,9 +5,20 @@
 .cell {
   width: 10px;
   height: 10px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.cell:hover {
+  border-color: black;
+  background-color: lightgray;
 }
 
 .cell.active {
   background-color: black;
+}
+
+.cell.active:hover {
+  border-color: white;
+  background-color: #444444;
 }

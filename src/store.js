@@ -10,6 +10,7 @@ const defaults = {
   SETTINGS: {
     width: 50,
     height: 50,
+    interval: 150,
   },
   CELLS: [],
 };
