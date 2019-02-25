@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import t from 'prop-types';
 
-import { actions } from '../store';
+import actions from '../store/actions';
 import './Controls.css';
 
 class Controls extends React.Component {
@@ -18,6 +18,8 @@ class Controls extends React.Component {
 
     const prev = prevProps.settings;
 
+    // If the dimensions have been changed, we need to set up
+    // whole cells grid again.
     if (width !== prev.width || height !== prev.height) {
       this.props.initCells(height, width);
     }

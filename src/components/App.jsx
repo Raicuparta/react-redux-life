@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import t from 'prop-types';
 
-import { actions } from '../store';
+import actions from '../store/actions';
 import Grid from './Grid';
 import Controls from './Controls';
 import './App.css';
@@ -17,14 +17,12 @@ class App extends React.Component {
     initCells(settings.width, settings.height);
   }
 
-  render() {
-    return (
-      <div className="app">
-        <Controls />
-        <Grid />
-      </div>
-    );
-  }
+  render = () => (
+    <div className="app">
+      <Controls />
+      <Grid />
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import t from 'prop-types';
 
-import { actions } from '../store';
+import actions from '../store/actions';
 import './Grid.css';
 
 const Grid = ({ cells, handleCellClick }) => (
@@ -25,7 +25,6 @@ const Grid = ({ cells, handleCellClick }) => (
         </div>
       ))
     }
-
   </div>
 );
 
