@@ -5,3 +5,7 @@
   height: 100vh;
   font-family: sans-serif;
 }
+
+.app {
+  display: flex;
+}
