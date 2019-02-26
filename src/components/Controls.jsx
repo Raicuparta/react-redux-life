@@ -26,23 +26,33 @@ class Controls extends React.Component {
   }
 
   handlePlayClick = () => {
+    const { intervalId } = this.state;
+
+    if (intervalId) {
+      this.stop();
+    } else {
+      this.play();
+    }
+  }
+
+  stop = () => {
+    const { intervalId } = this.state;
+
+    clearInterval(intervalId);
+    this.setState({
+      intervalId: null,
+    });
+  }
+
+  play = () => {
     const {
       nextTick,
       settings,
     } = this.props;
 
-    const { intervalId } = this.state;
-
-    if (intervalId) {
-      clearInterval(intervalId);
-      this.setState({
-        intervalId: null,
-      });
-    } else {
-      this.setState({
-        intervalId: setInterval(nextTick, settings.interval),
-      });
-    }
+    this.setState({
+      intervalId: setInterval(nextTick, settings.interval),
+    });
   }
 
   handleWidthChange = (event) => {
@@ -54,6 +64,8 @@ class Controls extends React.Component {
   }
 
   updateDimension = (key, value) => {
+    this.stop();
+
     const numericValue = parseInt(value, 10);
 
     // Validate input
@@ -73,7 +85,7 @@ class Controls extends React.Component {
     for (let x = 0; x < settings.width; x++) {
       for (let y = 0; y < settings.height; y++) {
         if (Math.random() > 0.5) {
-          toggleCell(y, x);
+          toggleCell(x, y);
         }
       }
     }
