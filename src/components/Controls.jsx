@@ -64,9 +64,25 @@ class Controls extends React.Component {
     this.props.updateSetting(key, numericValue);
   }
 
+  handleRandomizeClick = () => {
+    const {
+      settings,
+      toggleCell,
+    } = this.props;
+
+    for (let x = 0; x < settings.width; x++) {
+      for (let y = 0; y < settings.height; y++) {
+        if (Math.random() > 0.5) {
+          toggleCell(y, x);
+        }
+      }
+    }
+  }
+
   render = () => (
     <div className="controls">
       <div className="controls-panel">
+        <button className="controls-button" onClick={this.handleRandomizeClick}>Randomize</button>
         <button className="controls-button" onClick={this.props.nextTick}>Next</button>
         <button className="controls-button" onClick={this.handlePlayClick}>
           {
@@ -102,6 +118,7 @@ const mapDispatchToProps = {
   nextTick: actions.nextTick,
   updateSetting: actions.updateSetting,
   initCells: actions.initCells,
+  toggleCell: actions.toggleCell,
 };
 
 Controls.propTypes = {
@@ -109,6 +126,7 @@ Controls.propTypes = {
   nextTick: t.func.isRequired,
   updateSetting: t.func.isRequired,
   initCells: t.func.isRequired,
+  toggleCell: t.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);
