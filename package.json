@@ -1,9 +1,12 @@
 {
+  "homepage": "http://raicuparta.github.io/react-redux-life",
   "name": "game-of-life",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
@@ -13,6 +16,7 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "react-scripts": "^1.0.17"
   }
 }
