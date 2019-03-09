@@ -1,22 +1,35 @@
 {
   "homepage": "http://raicuparta.github.io/react-redux-life",
-  "name": "game-of-life",
-  "version": "0.0.0",
+  "name": "react-redux-life",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
   "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "2.1.8",
     "prop-types": "^15.7.2",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
     "react-scripts": "^1.0.17"
-  }
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
